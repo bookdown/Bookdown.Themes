@@ -5,26 +5,26 @@
 Your first step is to establish a public repository from which i can pull your work into the master repository.
 
  1. Setup a GitHub account (https://github.com/), if you haven't yet
- 2. Fork the bookdown-bootswatch-templates repository (https://github.com/tobiju/bookdown-bootswatch-templates)
+ 2. Fork the Bookdown.Themes repository (https://github.com/bookdown/Bookdown.Themes)
  3. Clone your fork locally and enter it (use your own GitHub username in the statement below)
 
     ```sh
-    % git clone git@github.com:<username>/bookdown-bootswatch-templates.git
-    % cd bookdown-bootswatch-templates
+    % git clone git@github.com:<username>/bookdown/Bookdown.Themes.git
+    % cd Bookdown.Themes
     ```
 
- 4. Add a remote to the canonical bookdown-bootswatch-templates repository, so you can keep your fork
+ 4. Add a remote to the canonical Bookdown.Themes repository, so you can keep your fork
     up-to-date:
 
     ```sh
-    % git remote add upstream https://github.com/tobiju/bookdown-bootswatch-templates.git
+    % git remote add upstream git@github.com:<username>/bookdown/Bookdown.Themes.git
     % git fetch upstream
     ```
 
 ## Keeping Up-to-Date
 
-Periodically, you should update your fork to match the canonical bookdown-bootswatch-templates repository. we have
-added a remote to the bookdown-bootswatch-templates repository, which allows you to do the following:
+Periodically, you should update your fork to match the canonical Bookdown.Themes repository. we have
+added a remote to the Bookdown.Themes repository, which allows you to do the following:
 
 ```sh
 % git checkout master
@@ -36,9 +36,9 @@ added a remote to the bookdown-bootswatch-templates repository, which allows you
 If you're tracking other branches -- for example, the "develop" branch, where new feature development occurs --
 you'll want to do the same operations for that branch; simply substitute  "develop" for "master".
 
-## Working on bookdown-bootswatch-templates
+## Working on Bookdown.Themes
 
-When working on bookdown-bootswatch-templates, we recommend you do each new feature or bugfix in a new branch. This simplifies the
+When working on Bookdown.Themes, we recommend you do each new feature or bugfix in a new branch. This simplifies the
 task of code review as well as of merging your changes into the canonical repository.
 
 A typical work flow will then consist of the following:
@@ -69,7 +69,7 @@ Delta compression using up to 2 threads.
 Compression objects: 100% (18/18), done.
 Writing objects: 100% (20/20), 8.19KiB, done.
 Total 20 (delta 12), reused 0 (delta 0)
-To ssh://git@github.com/tobiju/bookdown-bootswatch-templates.git
+To ssh://git@github.com:bookdown/Bookdown.Themes.git
    g5342..9k3532  HEAD -> master
 ```
 
@@ -109,8 +109,8 @@ branches.
 
 RSS feeds may be found at:
 
-`https://github.com/tobiju/bookdown-bootswatch-templates/commits/<branch>.atom`
+`https://github.com/bookdown/Bookdown.Themes/commits/<branch>.atom`
 
 where &lt;branch&gt; is a branch in the repository.
 
-To subscribe to git email notifications, simply watch or fork the bookdown-bootswatch-templates repository on GitHub.
+To subscribe to git email notifications, simply watch or fork the Bookdown.Themes repository on GitHub.
