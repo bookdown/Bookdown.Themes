@@ -12,9 +12,6 @@
 // this file multiple times.
 include_once __DIR__ . '/helper.php';
 
-// default library templates
-$library = (getenv('VENDOR_PATH') ?: dirname(dirname(dirname(__DIR__))).'/') . "bookdown/bookdown/templates";
-
 // project-specific templates
 $templatePath = __DIR__;
 
@@ -27,7 +24,7 @@ $templates->set("style", "{$templatePath}/style.php");
 $templates->set("body", "{$templatePath}/body.php");
 $templates->set("script", "{$templatePath}/script.php");
 $templates->set("nav", "{$templatePath}/nav.php");
-$templates->set("core", "{$library}/core.php");
+$templates->set("core", "{$templatePath}/core.php");
 $templates->set("navheader", "{$templatePath}/navheader.php");
 $templates->set("navfooter", "{$templatePath}/navfooter.php");
 $templates->set("toc", "{$templatePath}/toc.php");
