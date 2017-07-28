@@ -1,5 +1,5 @@
 {
-  "name": "tobiju/bookdown-bootswatch-templates",
+  "name": "bookdown/themes",
   "type": "library",
   "description": "Bookdown.io With Bootswatch Styles And Prism Syntax Highlighting",
   "keywords": [
@@ -14,15 +14,12 @@
     "static site",
     "docs"
   ],
-  "homepage": "https://github.com/tobiju/bookdown-bootswatch-templates",
+  "homepage": "https://github.com/bookdown/Bookdown.Themes",
   "license": "BSD-3-Clause",
   "authors": [
     {
       "name": "Bookdown Bootswatch Templates Contributors",
-      "homepage": "https://github.com/tobiju/bookdown-bootswatch-templates/contributors"
+      "homepage": "https://github.com/bookdown/Bookdown.Themes/contributors"
     }
-  ],
-  "require": {
-    "bookdown/bookdown": "1.x-dev"
-  }
+  ]
 }
