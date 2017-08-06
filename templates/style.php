@@ -193,6 +193,18 @@
         padding-left: 60px;
     }
 
+    /* page headings */
+    .list-toc li.level-2 .text-number {
+        padding-left: 40px;
+    }
+    .list-toc li.level-3 .text-number {
+        padding-left: 60px;
+    }
+    .list-toc li.level-4 .text-number,
+    .list-toc li.level-5 .text-number,
+    .list-toc li.level-6 .text-number {
+        padding-left: 80px;
+    }
 
     .list-toc .list-group-item .row {
         padding: 7px 0 7px;

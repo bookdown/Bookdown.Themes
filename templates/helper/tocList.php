@@ -102,7 +102,7 @@ class tocListHelper
 
         /** @var \Bookdown\Bookdown\Content\Heading $heading */
         foreach ($entry['headings'] as $heading) {
-            $return .= '<li class="list-group-item">';
+            $return .= '<li class="list-group-item level-' . $heading->getHeadingTagLevel() . '">';
             $return .= '<div class="row clearfix">';
             $return .= $this->renderHeading($heading);
             $return .= '</div>';
