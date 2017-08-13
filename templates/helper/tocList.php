@@ -22,11 +22,14 @@ class tocListHelper
     public function __construct(\Aura\Html\Helper\AnchorRaw $anchorRaw, \Bookdown\Bookdown\Config\RootConfig $config)
     {
         $this->anchorRaw = $anchorRaw;
+
+        $config = ($config->get('theme'));
+
         /**
          * Define on which level a collapsible sublist will be created.
          * @var integer
          */
-        $this->sublistLevelThrottle = ($config->get('tocSublistLevelThrottle') !== null) ? $config->get('tocSublistLevelThrottle') : 4  ;
+        $this->sublistLevelThrottle = isset($config->toc->collapsibleFromLevel) ? $config->toc->collapsibleFromLevel : 4;
     }
 
     /**
