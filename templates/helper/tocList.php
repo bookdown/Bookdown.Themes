@@ -1,5 +1,8 @@
 <?php
 
+use Bookdown\Bookdown\Content\TocHeading;
+use Bookdown\Bookdown\Content\TocHeadingIterator;
+
 class tocListHelper
 {
     /**
@@ -23,24 +26,24 @@ class tocListHelper
          * Define on which level a collapsible sublist will be created.
          * @var integer
          */
-        $this->sublistLevelThrottle = ($config->get('tocSublistLevelThrottle') !== null) ? $config->get('tocSublistLevelThrottle'): 2;
+        $this->sublistLevelThrottle = ($config->get('tocSublistLevelThrottle') !== null) ? $config->get('tocSublistLevelThrottle') : 4  ;
     }
 
     /**
-     * @param array $entries
+     * @param TocHeadingIterator $tocHeadings
      * @return string
      */
-    public function __invoke(array $entries)
+    public function __invoke(TocHeadingIterator $tocHeadings)
     {
-        return $this->renderTocList($entries);
+        return $this->renderTocList($tocHeadings);
     }
 
     /**
-     * @param array $entries
+     * @param TocHeadingIterator $tocHeadings
      * @param null $collapseId
      * @return string
      */
-    protected function renderTocList(array $entries, $collapseId = null)
+    protected function renderTocList(TocHeadingIterator $tocHeadings, $collapseId = null)
     {
         $return = '';
 
@@ -51,71 +54,46 @@ class tocListHelper
         }
 
         $return .= '<ul ' . $listCssClass . '>';
-        foreach ($entries as $entry) {
-            if (isset($entry['children'])) {
-                $return .= $this->renderTocListWithChildren($entry);
 
-            } else {
-                $return .= $this->renderTocListWithOutChildren($entry);
+
+        foreach ($tocHeadings as $tocHeading) {
+
+            $return .= '<li class="list-group-item">';
+
+            $return .= '<div class="row clearfix">';
+            $return .= $this->renderHeading($tocHeading);
+
+            if ($tocHeading->getLevel() > $this->sublistLevelThrottle) {
+                $collapseId = 'collapse-' . str_replace('.', '-', trim($tocHeading->getNumber(), '.'));
+
+                if ($tocHeading->hasChildren()) {
+                    $return .= '<a class="bbt-toc-toggle badge glyphicon collapsed" href="#' . $collapseId . '" data-toggle="collapse" aria-controls="' . $collapseId . '" aria-expanded="false"></a>';
+                }
             }
+
+            $return .= '</div>';
+
+            if ($tocHeading->hasChildren()) {
+                $return .= $this->renderTocList($tocHeading->getChildren(), $collapseId);
+            }
+
+            $return .= '</li>';
         }
+
         $return .= '</ul>';
 
         return $return;
     }
 
     /**
-     * @param $entry
+     * @param TocHeading $tocHeading
      * @return string
      */
-    protected function renderTocListWithChildren($entry)
+    protected function renderHeading(TocHeading $tocHeading)
     {
-        $collapseId = null;
-
-        $return = '<li class="list-group-item">';
-        $return .= '<div class="row clearfix">';
-
-        /** @var \Bookdown\Bookdown\Content\Heading $heading */
-        foreach ($entry['headings'] as $heading) {
-
-            $return .= $this->renderHeading($heading);
-            if ($heading->getLevel() > $this->sublistLevelThrottle) {
-                $collapseId = 'collapse-' . str_replace('.', '-', trim($heading->getNumber(), '.'));
-                $return .= '<a class="bbt-toc-toggle badge glyphicon collapsed" href="#' . $collapseId . '" data-toggle="collapse" aria-controls="' . $collapseId . '" aria-expanded="false"></a>';
-            }
-        }
-        $return .= '</div>';
-
-        $return .= $this->renderTocList($entry['children'], $collapseId);
-        $return .= '</li>';
-
-        return $return;
-    }
-
-    /**
-     * @param $entry
-     * @return string
-     */
-    protected function renderTocListWithOutChildren($entry)
-    {
-        $return = '';
-
-        /** @var \Bookdown\Bookdown\Content\Heading $heading */
-        foreach ($entry['headings'] as $heading) {
-            $return .= '<li class="list-group-item level-' . $heading->getHeadingTagLevel() . '">';
-            $return .= '<div class="row clearfix">';
-            $return .= $this->renderHeading($heading);
-            $return .= '</div>';
-            $return .= '</li>';
-        }
-
-        return $return;
-    }
-
-    protected function renderHeading(\Bookdown\Bookdown\Content\Heading $heading)
-    {
-        $return = '<div class="col-sm-3">' . '<span class="text-number">' . $heading->getNumber() . '</span></div>';
-        $return .= '<div class="col-sm-9">' . $this->anchorRaw->__invoke($heading->getHref(), $heading->getTitle()) . '</div>';
+        $return = '<div class="col-sm-3">' . '<span class="text-number">' . $tocHeading->getNumber() . '</span></div>';
+        $return .= '<div class="col-sm-9">' .  $this->anchorRaw->__invoke($tocHeading->getHref(),
+                $tocHeading->getTitle()) . '</div>';
 
         return $return;
     }

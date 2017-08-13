@@ -180,9 +180,6 @@
         margin: 0;
     }
 
-    .list-toc .text-number {
-        padding-left: 60px;
-    }
     .list-toc li .text-number {
         padding-left: 20px;
     }
@@ -192,18 +189,14 @@
     .list-toc li li li .text-number {
         padding-left: 60px;
     }
-
-    /* page headings */
-    .list-toc li.level-2 .text-number {
-        padding-left: 40px;
-    }
-    .list-toc li.level-3 .text-number {
-        padding-left: 60px;
-    }
-    .list-toc li.level-4 .text-number,
-    .list-toc li.level-5 .text-number,
-    .list-toc li.level-6 .text-number {
+    .list-toc li li li li .text-number {
         padding-left: 80px;
+    }
+    .list-toc li li li li li .text-number {
+        padding-left: 100px;
+    }
+    .list-toc .text-number {
+        padding-left: 100px;
     }
 
     .list-toc .list-group-item .row {
