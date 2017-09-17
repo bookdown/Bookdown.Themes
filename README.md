@@ -1,28 +1,39 @@
 # Bookdown.io With Bootswatch Styles And Prism Syntax Highlighting
 
-If you generate your documentation with [bookdown](http://bookdown.io/) and want some nice styles and syntax highlighting 
-for your code blocks, then this package come to the rescue :).
-
-## Installation
-Installation of this library uses Composer. For Composer documentation, please refer to
-[getcomposer.org](http://getcomposer.org/).
-
-Put the following into your `composer.json` or run `composer require tobiju/bookdown-bootswatch-templates`.
-
-    {
-        "require-dev": {
-            "tobiju/bookdown-bootswatch-templates": "^1.1.0"
-        }
-    }
-
-Put the following into your `bookdown.json`
-
-```
+This package is now part of [bookdown](http://bookdown.io/). You can enable it by setup your bookdown.json 
+```json
 {
-    ...
-    "template": "../vendor/tobiju/bookdown-bootswatch-templates/templates/main.php"
+"template": "bookdown/themes"
 }
 ```
+
+## Installation
+Just install [bookdown](http://bookdown.io/) and setup your `bookdown.json`
+
+## Configuration
+At the moment you can setup the `theme` with the following settings per `bookdown.json`
+
+```json
+"theme": {
+    "toc": {
+      "collapsibleFromLevel": 1
+    }
+  }
+```
+### Table of Contents (toc)
+
+<table>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><i>collapsibleFromLevel</i></td>
+<td>integer</td>
+<td>The toc is collapsible from apart this value</td>
+</tr>
+</table>
 
 ## Styles
 Choose your preferred style by setting the `CSS_BOOTSWATCH` and `CSS_PRISM` environment variable before generating the book. 
