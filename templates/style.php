@@ -168,49 +168,39 @@
     }
 
     /* TOC */
+    .list-toc {
+        padding: 0;
+    }
+
     .list-toc .list-group-item {
         background: 0 none;
         position: relative;
         font-weight: bold;
         padding: 0;
+        margin: 0;
     }
 
-    .list-toc .list-group-item.level-default {
-        padding-left: 60px;
-    }
-
-    .list-toc .list-group-item.level-1 {
-        padding-left: 0;
-    }
-
-    .list-toc .list-group-item.level-2 {
+    .list-toc li .text-number {
         padding-left: 20px;
     }
-
-    .list-toc .list-group-item.level-3 {
+    .list-toc li li .text-number {
         padding-left: 40px;
     }
-
-    .list-toc .list-group-item.level-4 {
+    .list-toc li li li .text-number {
         padding-left: 60px;
+    }
+    .list-toc li li li li .text-number {
+        padding-left: 80px;
+    }
+    .list-toc li li li li li .text-number {
+        padding-left: 100px;
+    }
+    .list-toc .text-number {
+        padding-left: 100px;
     }
 
     .list-toc .list-group-item .row {
-        padding: 7px 0;
-    }
-
-    .list-toc .list-group-item .text-number {
-        padding-left: 10px;
-    }
-
-    .list-toc .list-toc-nested .list-group-item {
-        font-weight: normal;
-        border: 0 none !important;
-    }
-
-    .list-toc .list-toc-nested {
-        margin-bottom: 0;
-        padding-bottom: 10px;
+        padding: 7px 0 7px;
     }
 
     .list-toc .list-group-item .bbt-toc-toggle {
